@@ -20,7 +20,7 @@ class PasswordResetForm(forms.Form):
 			return email
 		raise forms.ValidationError('Nenhum usuário encontrado com este e-mail')
 
-	def save():
+	def save(self):
 		user = User.objects.get(email=form.cleaned_data['email'])
 		key = generate_hash_key(user.username)
 		reset = PasswordReset(key=key, user=user)
